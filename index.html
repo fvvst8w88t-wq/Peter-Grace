@@ -3,21 +3,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>Us 💗</title>
+<title>Love Notes</title><link rel="icon" href="logo.png"><link rel="apple-touch-icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fff3f7;--bg2:#f3ecff;--card:#ffffffd9;--tx:#5a3a4a;--sub:#b093a3;--pk:#ff6b98;--soft:#ffeaf1;--sh:0 10px 28px #ff6b982e}
-[data-theme=dark]{--bg:#1b1422;--bg2:#251a33;--card:#2d2238d9;--tx:#f8e8f0;--sub:#a891b4;--soft:#3a2a47;--sh:0 10px 28px #0006}
+:root{--g1:#ffd1e0;--g2:#e4d4ff;--bg:#fff3f7;--bg2:#f3ecff;--card:#ffffffd9;--tx:#4a2e3d;--sub:#8f6f81;--pk:#ff6b98;--soft:#ffeaf1;--sh:0 10px 28px #ff6b982e}
+[data-theme=dark]{color-scheme:dark;--pk:#ff7fa8;--g1:#4d2d4a;--g2:#352b63;--bg:#1b1422;--bg2:#251a33;--card:#2d2238f2;--tx:#fff1f7;--sub:#cdb6d9;--soft:#3d2c4b;--sh:0 10px 28px #0006}
 *{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
 [hidden]{display:none!important}
-body{font-family:Nunito,ui-rounded,-apple-system,"SF Pro Rounded",sans-serif;font-weight:600;color:var(--tx);background:linear-gradient(160deg,var(--bg),var(--bg2)) fixed;min-height:100vh;padding-top:env(safe-area-inset-top,0px);transition:background .4s}
+body{font-family:Fredoka,ui-rounded,-apple-system,"SF Pro Rounded",sans-serif;font-weight:500;color:var(--tx);background:linear-gradient(160deg,var(--bg),var(--bg2)) fixed;min-height:100vh;padding-top:env(safe-area-inset-top,0px);transition:background .4s}
 #fl{position:fixed;inset:0;overflow:hidden;pointer-events:none}
 #fl span{position:absolute;bottom:-50px;opacity:.3;animation:up linear infinite}
 @keyframes up{to{transform:translateY(-115vh) rotate(40deg)}}
 #view{position:relative;max-width:520px;margin:0 auto;padding:14px 16px 130px}
-h1{font-size:32px;font-weight:800;margin:8px 4px 14px}
-h3{font-size:16px;font-weight:800;margin-bottom:10px}
+h1{font-size:32px;font-weight:600;margin:8px 4px 14px}
+h3{font-size:16px;font-weight:600;margin-bottom:10px}
 .card{background:var(--card);backdrop-filter:blur(14px);border-radius:28px;padding:18px;margin-bottom:16px;box-shadow:var(--sh);animation:pop .55s cubic-bezier(.2,1.4,.4,1) both}
 @keyframes pop{from{opacity:0;transform:translateY(22px) scale(.94)}}
 @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.12)}30%{transform:scale(1)}45%{transform:scale(1.08)}}
@@ -25,9 +25,9 @@ h3{font-size:16px;font-weight:800;margin-bottom:10px}
 @keyframes bounce{40%{transform:translateY(-8px) scale(1.2)}}
 @keyframes fall{to{transform:translateY(105vh) rotate(360deg)}}
 .sub{color:var(--sub);font-size:13px}
-.big{text-align:center;padding:26px 12px;background:linear-gradient(135deg,#ffd1e0aa,#e4d4ffaa)}
+.big{text-align:center;padding:26px 12px;background:linear-gradient(135deg,var(--g1),var(--g2))}
 .big .heart{font-size:34px;display:inline-block;animation:beat 1.6s infinite}
-.big b{display:block;font-size:76px;font-weight:800;color:var(--pk);line-height:1.05}
+.big b{display:block;font-size:76px;font-weight:600;color:var(--pk);line-height:1.05}
 .row{display:flex;gap:12px}.row>*{flex:1;min-width:0}
 .av{text-align:center;position:relative;padding-top:56px}
 .av .pic{width:84px;height:84px;border-radius:50%;object-fit:cover;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:38px;margin:0 auto 8px;border:4px solid transparent;background-clip:padding-box;box-shadow:0 0 0 3px var(--pk)}
@@ -36,18 +36,19 @@ h3{font-size:16px;font-weight:800;margin-bottom:10px}
 .bar{height:14px;border-radius:7px;background:var(--soft);overflow:hidden;margin-top:10px}
 .bar i{display:block;height:100%;background:linear-gradient(90deg,#ffa4c0,var(--pk));border-radius:7px;transition:width .6s cubic-bezier(.2,1.4,.4,1)}
 input,textarea,select{width:100%;font:inherit;font-size:16px;color:var(--tx);background:var(--soft);border:2px solid transparent;border-radius:16px;padding:12px 14px;margin:4px 0 12px;outline:none;transition:border .2s,box-shadow .2s}
+::placeholder{color:var(--sub);opacity:.85}select option{background:var(--bg);color:var(--tx)}
 input:focus,textarea:focus,select:focus{border-color:var(--pk);box-shadow:0 0 0 4px #ff6b9822}
 textarea{min-height:92px;resize:vertical}
-label{font-size:13px;color:var(--sub);font-weight:800}
-button{font:inherit;font-weight:800;border:0;border-radius:20px;padding:13px 18px;background:linear-gradient(135deg,#ff8fb1,var(--pk));color:#fff;width:100%;cursor:pointer;box-shadow:0 6px 16px #ff6b9855;transition:transform .15s}
+label{font-size:13px;color:var(--sub);font-weight:600}
+button{font:inherit;font-weight:600;border:0;border-radius:20px;padding:13px 18px;background:linear-gradient(135deg,#ff8fb1,var(--pk));color:#fff;width:100%;cursor:pointer;box-shadow:0 6px 16px #ff6b9855;transition:transform .15s}
 button:active{transform:scale(.94)}
 button.g{background:var(--soft);color:var(--pk);box-shadow:none}
 button.s{width:auto;padding:9px 16px;font-size:14px}
 .seg{display:flex;gap:6px}.seg button{padding:10px 4px;font-size:14px}
-.pill{background:linear-gradient(135deg,#ffd1e0,#e4d4ff);color:#6b3a55;border-radius:20px;padding:12px 16px;margin-bottom:12px;font-size:14px;font-weight:800;animation:pop .5s both;cursor:pointer}
+.pill{background:linear-gradient(135deg,var(--g1),var(--g2));color:var(--tx);border-radius:20px;padding:12px 16px;margin-bottom:12px;font-size:14px;font-weight:600;animation:pop .5s both;cursor:pointer}
 .ans{background:var(--soft);border-radius:16px;padding:12px 14px;margin:4px 0 12px;white-space:pre-wrap;font-size:15px}
 .jp{width:100%;border-radius:20px;margin:4px 0 8px}
-.qh{font-size:20px;font-weight:800;margin-bottom:6px}
+.qh{font-size:20px;font-weight:600;margin-bottom:6px}
 .strip{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:none}.strip::-webkit-scrollbar{display:none}
 .dy{flex:0 0 50px;text-align:center;padding:8px 0;border-radius:18px;background:var(--soft);cursor:pointer;position:relative;transition:transform .2s}
 .dy small{display:block;font-size:11px;color:var(--sub)}.dy b{font-size:17px}
@@ -57,29 +58,31 @@ button.s{width:auto;padding:9px 16px;font-size:14px}
 .nav2 button{width:42px;height:42px;padding:0;border-radius:50%;font-size:18px}
 .rate{text-align:center;background:var(--soft);border-radius:24px;padding:16px 16px 20px;margin:6px 0 14px}
 .face{font-size:64px;line-height:1.1}.pp{animation:bounce .45s}
-.pct{font-size:28px;color:var(--pk);margin-bottom:8px}.pct b{font-weight:800;font-size:38px}
-.rg{-webkit-appearance:none;appearance:none;height:16px;border-radius:8px;padding:0;margin:6px 0 0;border:0;background:linear-gradient(90deg,#ffa4c0,var(--pk)) 0/var(--v) 100% no-repeat,#fff9;box-shadow:inset 0 1px 3px #0002}
+.pct{font-size:28px;color:var(--pk);margin-bottom:8px}.pct b{font-weight:600;font-size:38px}
+.rg{-webkit-appearance:none;appearance:none;height:16px;border-radius:8px;padding:0;margin:6px 0 0;border:0;background:linear-gradient(90deg,#ffa4c0,var(--pk)) 0/var(--v) 100% no-repeat,var(--bg);box-shadow:inset 0 1px 3px #0002}
 .rg:focus{box-shadow:inset 0 1px 3px #0002}
 .rg::-webkit-slider-thumb{-webkit-appearance:none;width:38px;height:38px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff4f86' d='M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.7A4.5 4.5 0 0 1 20 10c0 5.800-8 11-8 11z'/%3E%3C/svg%3E") center/contain no-repeat;filter:drop-shadow(0 3px 4px #ff4f8666)}
 .rg::-moz-range-thumb{width:38px;height:38px;border:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff4f86' d='M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.7A4.5 4.5 0 0 1 20 10c0 5.800-8 11-8 11z'/%3E%3C/svg%3E") center/contain no-repeat}
-.qc{text-align:center;background:linear-gradient(135deg,#ffb8d0,#c9b6ff);color:#fff;position:relative;overflow:hidden}
+.qc{text-align:center;background:linear-gradient(135deg,#ff7fa8,#9b7bff);color:#fff;position:relative;overflow:hidden}
 .qc:before{content:"“";position:absolute;top:-20px;left:12px;font-size:120px;opacity:.3}
-.qc .q{font-size:22px;line-height:1.45;font-weight:800;padding:22px 6px 16px;position:relative}
+.qc .q{font-size:22px;line-height:1.45;font-weight:600;padding:22px 6px 16px;position:relative}
 .qc button{background:#fff3;box-shadow:none}
 .qm{display:flex;gap:8px}
 .fv{background:var(--soft);border-radius:20px;padding:14px;margin-bottom:10px;font-size:15px;animation:pop .4s both}
 nav{position:fixed;left:14px;right:14px;bottom:calc(12px + env(safe-area-inset-bottom,0px));max-width:492px;margin:auto;background:var(--card);backdrop-filter:blur(18px);border-radius:32px;box-shadow:var(--sh);display:flex;padding:8px;z-index:5}
-nav a{flex:1;text-align:center;font-size:11px;font-weight:800;color:var(--sub);padding:6px 0;border-radius:24px;cursor:pointer}
+nav a{flex:1;text-align:center;font-size:11px;font-weight:600;color:var(--sub);padding:6px 0;border-radius:24px;cursor:pointer}
 nav a span{display:block;font-size:22px}nav a.on{background:var(--soft);color:var(--pk)}nav a.on span{animation:bounce .5s}
+.brand{display:flex;align-items:center;gap:10px;margin:6px 4px 0}.brand img{width:40px;height:40px;border-radius:12px;object-fit:cover}.brand b{font-size:18px;color:var(--pk)}.brand sup,h1 sup{font-size:10px}
+.lg{width:96px;height:96px;border-radius:26px;object-fit:cover;animation:beat 1.6s infinite;box-shadow:var(--sh)}
 #login{position:relative;max-width:360px;margin:16vh auto 0;padding:20px;text-align:center}
 #login h1{font-size:36px}#login .heart{font-size:64px;animation:beat 1.4s infinite}
-#toast{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);left:50%;transform:translateX(-50%);background:var(--pk);color:#fff;border-radius:22px;padding:10px 18px;font-size:14px;font-weight:800;z-index:9;box-shadow:var(--sh)}
+#toast{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);left:50%;transform:translateX(-50%);background:var(--pk);color:#fff;border-radius:22px;padding:10px 18px;font-size:14px;font-weight:600;z-index:9;box-shadow:var(--sh)}
 .cf{position:fixed;top:-30px;font-size:24px;animation:fall 1.8s ease-in forwards;z-index:9;pointer-events:none}
 </style></head>
 <body>
 <div id="fl"></div>
 <div id="login" hidden>
-  <div class="heart">💗</div><h1>Our Little World</h1>
+  <img class="lg" src="logo.png" alt="Love Notes" onerror="this.outerHTML='<div class=heart>💗</div>'"><h1>Love Notes<sup>™</sup></h1>
   <p class="sub" style="margin-bottom:20px">Just the two of us 🌸</p>
   <input id="em" type="email" placeholder="Email" autocomplete="username">
   <input id="pw" type="password" placeholder="Password" autocomplete="current-password">
@@ -97,12 +100,10 @@ import {getFirestore,doc,setDoc,onSnapshot,collection} from "https://www.gstatic
 
 /* ====== PASTE YOUR FIREBASE CONFIG HERE ====== */
 const firebaseConfig = {
-  apiKey: "AIzaSyCPLODnYR3I_Si49s1BOQn5-nmD_u7DfH8",
-  authDomain: "peterandgrace.firebaseapp.com",
-  projectId: "peterandgrace",
-  storageBucket: "peterandgrace.firebasestorage.app",
-  messagingSenderId: "340697208916",
-  appId: "1:340697208916:web:9f9725822d2347229ef5c1"
+  apiKey: "PASTE_HERE",
+  authDomain: "PASTE_HERE",
+  projectId: "PASTE_HERE",
+  appId: "PASTE_HERE"
 };
 /* ============================================= */
 
@@ -115,12 +116,12 @@ const addD=(s,n)=>{const d=new Date(s+"T00:00:00");d.setDate(d.getDate()+n);retu
 const lab=s=>new Date(s+"T00:00:00").toLocaleDateString(undefined,{weekday:"long",month:"short",day:"numeric"});
 const QUOTES=["Love is built one small kindness at a time.","Home is wherever you are.","Choose each other, again and again, every day.","Small moments together become the biggest memories.","Two people growing in the same direction: that's love.","Listening is a quiet way of saying I love you.","Be the reason they smile today.","Love grows where gratitude lives.","You don't have to be perfect, just be present.","Holding hands is a promise without words.","The little things are the big things.","With you, ordinary days feel like magic.","Every day with you is my favourite day.","Love is a team sport.","The best part of my day is when I get to tell you about it.","Together is my favourite place to be.","Kind words are love in its simplest form.","You make my heart feel at home.","Laugh together, grow together, stay together.","Love is paying attention to each other's tiny joys."];
 const ASK=["What's a tiny thing I do that you secretly love?","What's your happiest memory of us so far?","Where would you take me for a surprise trip?","What song reminds you of us?","What's one dream you want us to chase together?","What made you smile today?","What's your favourite way to spend a lazy day with me?","What's something new you'd like us to try?","When did you first know you liked me?","What's one thing I can do to make your week better?"];
-const DATES=["🍜 Cook a new recipe together","🌅 Watch the sunset somewhere new","🎬 Movie night with homemade popcorn","📸 Photo walk, take 10 pics of each other","🧋 Café-hopping day","🎲 Board-game night","🧺 Picnic in the park","💌 Write each other a letter and swap","🛍️ Visit a market and buy a surprise for each other","🌙 Stargazing with blankets"];
+const DARES=["Give your partner a 20-second hug 🤗","Send a voice note singing a love song 🎤","Write a 3-line love poem and read it out loud 📝","Say 5 things you love about them, no repeats 💕","Make them a silly drawing of the two of you 🎨","Do a little dance together for one minute 💃","Text them your cutest old photo and the story behind it 📸","Feed them their favourite snack today 🍓","Do whatever they say for 10 minutes (kindly!) 👑","Share one secret wish you've never told them 🌠","Call them by a brand-new cute nickname all day 🐣","Plan a mini-date for this weekend and surprise them 🎈"];
 const SIGNS=["♈ Aries","♉ Taurus","♊ Gemini","♋ Cancer","♌ Leo","♍ Virgo","♎ Libra","♏ Scorpio","♐ Sagittarius","♑ Capricorn","♒ Aquarius","♓ Pisces"];
 const FACES=["😿","😢","🥺","🙂","😊","🥰","😍"];
 const face=v=>FACES[Math.min(6,Math.floor(v/14.3))];
 const rnd=n=>Math.floor(Math.random()*n);
-let U={},C={},J={},me,tab="home",photo=null,jd=today(),qi=null,ai=rnd(ASK.length),di=rnd(DATES.length),counted=false;
+let U={},C={},J={},Q={},D={},me,tab="home",photo=null,jd=today(),qi=null,counted=false;
 const pid=()=>Object.keys(U).find(k=>k!==me);
 const toast=t=>{const e=$("#toast");e.textContent=t;e.hidden=false;setTimeout(()=>e.hidden=true,2000)};
 const confetti=()=>{for(let i=0;i<26;i++){const s=document.createElement("span");s.className="cf";s.textContent=["💗","✨","🌸","💕","🎀"][rnd(5)];s.style.left=rnd(100)+"vw";s.style.animationDelay=Math.random()*.6+"s";document.body.append(s);setTimeout(()=>s.remove(),2600)}};
@@ -152,12 +153,12 @@ const avCard=(u={},mine)=>{
   <b>${esc(u.name||(mine?"You":"Partner"))}</b><div class="sub">${esc(u.zodiac||"")}</div></div>`};
 
 function home(){
-  const t=today(),m=U[me]||{},p=U[pid()]||{};
+  const t=today(),m=U[me]||{},p=U[pid()]||{},nick=p.nick||m.name||"love";
   const d=C.start?Math.floor((new Date(t)-new Date(C.start))/864e5)+1:null;
   const n=[me,pid()].filter(k=>k&&J[t+"_"+k]?.saved).length;
   const next=d?(Math.floor(d/100)+1)*100:0;
   const ap=Object.entries(J).find(([k,v])=>v.uid===me&&v.appeal?.status==="pending");
-  return `<h1>Hello, love 💕</h1>
+  return `<div class="brand"><img src="logo.png" alt="" onerror="this.style.display='none'"><b>Love Notes<sup>™</sup></b></div><h1>Welcome, ${esc(nick)} 💕</h1>
   <div class="card big">${d?`<span class="heart">💗</span><b id="dn" data-n="${d}">${d}</b><div class="sub">days together</div>
     <div class="sub" style="margin-top:8px">✨ ${next-d} days until day ${next}</div>`:`<div class="sub">Set your anniversary in Settings 🎀</div>`}</div>
   ${ap?`<div class="pill" onclick="A.go('${ap[1].date}',1)">💌 Your partner sent you an appeal, tap to read</div>`:""}
@@ -210,13 +211,29 @@ function journal(){
   ${partnerBlock()}`;
 }
 
+const dayN=()=>Math.floor(new Date(today()).getTime()/864e5);
+function askCard(){
+  const t=today(),mine=Q[t+"_"+me],theirs=Q[t+"_"+pid()];
+  return `<div class="card"><h3>🗣️ Ask each other</h3><div class="ans" style="font-size:17px">${ASK[dayN()%ASK.length]}</div>
+  <textarea id="qa" placeholder="Write your answer here…">${esc(mine?.a)}</textarea><button class="s" onclick="A.qa()">${mine?"Update my answer":"Send my answer"} 💬</button>
+  ${mine&&theirs?`<label style="display:block;margin-top:14px">Their answer</label><div class="ans">${esc(theirs.a)}</div>`:theirs?`<div class="sub" style="margin-top:10px">They answered! Send yours to peek 👀</div>`:""}</div>`;
+}
+function dareCard(){
+  const t=today(),y=addD(t,-1),mineD=D[t+"_"+me],sent=D[t+"_"+pid()];
+  const iGive=pid()&&J[y+"_"+pid()]?.rating===100,theyGive=J[y+"_"+me]?.rating===100;
+  const body=mineD?`<div class="ans" style="font-size:17px">${esc(mineD.text)}</div><div class="sub">👑 A dare from your partner</div>`
+    :theyGive?`<div class="sub">👑 Your partner got 100% love yesterday, so they're writing your dare today. Check back soon!</div>`
+    :`<div class="ans" style="font-size:17px">${DARES[dayN()%DARES.length]}</div><div class="sub">🎲 Today's dare, it can't be changed!</div>`;
+  const give=!iGive?"":sent?`<label style="display:block;margin-top:14px">👑 Your dare for your partner</label><div class="ans">${esc(sent.text)}</div>`
+    :`<label style="display:block;margin-top:14px">👑 You got 100% love yesterday! Dare your partner (can't be changed once sent)</label><textarea id="dr" placeholder="Your dare…"></textarea><button class="s" onclick="A.dare()">Send dare 🎯</button>`;
+  return `<div class="card"><h3>🎯 Dare of the day</h3>${body}${give}</div>`;
+}
 function quotes(){
   const q=qi??Math.floor(Date.now()/864e5)%QUOTES.length,favs=U[me]?.favs||[];
   return `<h1>Love corner</h1>
   <div class="card qc"><div class="sub" style="color:#fffc;position:relative">✨ Quote of the day</div><div class="q">${QUOTES[q]}</div>
     <div class="qm"><button onclick="A.fav(${q})">${favs.includes(q)?"💖 Saved":"🤍 Save"}</button><button onclick="A.shuf()">🎲 Another</button><button onclick="A.copy(${q})">📋 Copy</button></div></div>
-  <div class="card"><h3>🗣️ Ask each other</h3><div class="ans" style="font-size:17px">${ASK[ai]}</div><button class="g s" onclick="A.ask()">Another question</button></div>
-  <div class="card"><h3>🎈 Date idea</h3><div class="ans" style="font-size:17px">${DATES[di]}</div><button class="g s" onclick="A.dt()">Surprise me</button></div>
+  ${askCard()}${dareCard()}
   <div class="card"><h3>💖 Favourite quotes</h3>${favs.length?favs.map(i=>`<div class="fv">“${QUOTES[i]}”</div>`).join(""):`<div class="sub">Tap 🤍 on a quote to keep it here</div>`}</div>`;
 }
 
@@ -267,7 +284,9 @@ const A=window.A={
   async appeal(){const v=$("#ap").value.trim();if(!v)return;await setDoc(doc(db,"journals",jd+"_"+pid()),{appeal:{text:v,status:"pending"}},{merge:true});document.activeElement.blur();draw(1)},
   async decide(ok){await setDoc(doc(db,"journals",jd+"_"+me),{appeal:{status:ok?"accepted":"declined"}},{merge:true});if(ok)confetti()},
   async fav(i){let f=[...(U[me]?.favs||[])];f=f.includes(i)?f.filter(x=>x!==i):[...f,i];await setDoc(doc(db,"users",me),{favs:f},{merge:true})},
-  shuf(){qi=rnd(QUOTES.length);draw(1)},ask(){ai=rnd(ASK.length);draw(1)},dt(){di=rnd(DATES.length);draw(1)},
+  shuf(){qi=rnd(QUOTES.length);draw(1)},async qa(){const v=$("#qa").value.trim();if(!v)return;await setDoc(doc(db,"qa",today()+"_"+me),{uid:me,date:today(),a:v});toast("Answer sent 💬");document.activeElement.blur();draw(1)},
+  async dare(){const v=$("#dr").value.trim(),id=today()+"_"+pid();if(!v||D[id])return;await setDoc(doc(db,"dares",id),{by:me,to:pid(),date:today(),text:v});toast("Dare sent 🎯");confetti();document.activeElement.blur();draw(1)},
+
   copy(i){navigator.clipboard?.writeText(QUOTES[i]);toast("Copied 📋")},
   theme(m){localStorage.setItem("th",m);applyTheme();draw(1)},
   async start(){await setDoc(doc(db,"couple","main"),{start:$("#st").value},{merge:true});toast("Saved 💞");document.activeElement.blur();draw(1)},
@@ -288,5 +307,7 @@ onAuthStateChanged(auth,u=>{
   onSnapshot(collection(db,"users"),s=>{U={};s.forEach(d=>U[d.id]=d.data());draw()});
   onSnapshot(doc(db,"couple","main"),s=>{C=s.data()||{};draw()});
   onSnapshot(collection(db,"journals"),s=>{J={};s.forEach(d=>J[d.id]=d.data());draw()});
+  onSnapshot(collection(db,"qa"),s=>{Q={};s.forEach(d=>Q[d.id]=d.data());draw()});
+  onSnapshot(collection(db,"dares"),s=>{D={};s.forEach(d=>D[d.id]=d.data());draw()});
 });
 </script></body></html>
