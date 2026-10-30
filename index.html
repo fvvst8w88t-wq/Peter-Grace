@@ -186,6 +186,7 @@ function home(){
 function partnerBlock(){
   const P=J[jd+"_"+pid()];
   if(!pid()||!P?.saved)return `<div class="card"><h3>💭 Partner's reflection</h3><div class="sub">Nothing from them for this day yet…</div></div>`;
+  if(!J[jd+"_"+me]?.saved)return `<div class="card" style="text-align:center"><div style="font-size:48px">🔒</div><h3>They wrote! Write yours first 💌</h3><div class="sub">Save your own entry for this day to unlock your partner's reflection.</div></div>`;
   if(P.rating>50||P.appeal?.status==="accepted")
     return `<div class="card"><h3>${face(P.rating)} Partner's reflection · ${P.rating}%</h3>
     <label>What made them feel loved</label><div class="ans">${esc(P.a1)}</div>
