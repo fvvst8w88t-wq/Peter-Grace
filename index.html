@@ -100,11 +100,14 @@ import {getFirestore,doc,setDoc,onSnapshot,collection} from "https://www.gstatic
 
 /* ====== PASTE YOUR FIREBASE CONFIG HERE ====== */
 const firebaseConfig = {
-  apiKey: "PASTE_HERE",
-  authDomain: "PASTE_HERE",
-  projectId: "PASTE_HERE",
-  appId: "PASTE_HERE"
+  apiKey: "AIzaSyCPLODnYR3I_Si49s1BOQn5-nmD_u7DfH8",
+  authDomain: "peterandgrace.firebaseapp.com",
+  projectId: "peterandgrace",
+  storageBucket: "peterandgrace.firebasestorage.app",
+  messagingSenderId: "340697208916",
+  appId: "1:340697208916:web:9f9725822d2347229ef5c1"
 };
+
 /* ============================================= */
 
 const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
