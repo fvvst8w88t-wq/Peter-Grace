@@ -3,68 +3,99 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>Us</title>
+<title>Us 💗</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f2f2f7;--card:#fff;--tx:#1c1c1e;--sub:#8e8e93;--pk:#ff5e87;--ln:#e5e5ea;--soft:#fff0f4}
-@media(prefers-color-scheme:dark){:root{--bg:#000;--card:#1c1c1e;--tx:#fff;--sub:#98989f;--ln:#38383a;--soft:#2a1d22}}
-*{box-sizing:border-box;margin:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--tx);padding-top:env(safe-area-inset-top,0px)}
+:root{--bg:#fff3f7;--bg2:#f3ecff;--card:#ffffffd9;--tx:#5a3a4a;--sub:#b093a3;--pk:#ff6b98;--soft:#ffeaf1;--sh:0 10px 28px #ff6b982e}
+[data-theme=dark]{--bg:#1b1422;--bg2:#251a33;--card:#2d2238d9;--tx:#f8e8f0;--sub:#a891b4;--soft:#3a2a47;--sh:0 10px 28px #0006}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
 [hidden]{display:none!important}
-#view{max-width:520px;margin:0 auto;padding:16px 16px 110px}
-h1{font-size:30px;font-weight:700;margin:8px 4px 14px}
-h3{font-size:15px;margin-bottom:8px}
-.card{background:var(--card);border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+body{font-family:Nunito,ui-rounded,-apple-system,"SF Pro Rounded",sans-serif;font-weight:600;color:var(--tx);background:linear-gradient(160deg,var(--bg),var(--bg2)) fixed;min-height:100vh;padding-top:env(safe-area-inset-top,0px);transition:background .4s}
+#fl{position:fixed;inset:0;overflow:hidden;pointer-events:none}
+#fl span{position:absolute;bottom:-50px;opacity:.3;animation:up linear infinite}
+@keyframes up{to{transform:translateY(-115vh) rotate(40deg)}}
+#view{position:relative;max-width:520px;margin:0 auto;padding:14px 16px 130px}
+h1{font-size:32px;font-weight:800;margin:8px 4px 14px}
+h3{font-size:16px;font-weight:800;margin-bottom:10px}
+.card{background:var(--card);backdrop-filter:blur(14px);border-radius:28px;padding:18px;margin-bottom:16px;box-shadow:var(--sh);animation:pop .55s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes pop{from{opacity:0;transform:translateY(22px) scale(.94)}}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.12)}30%{transform:scale(1)}45%{transform:scale(1.08)}}
+@keyframes bob{50%{transform:translate(-50%,-5px)}}
+@keyframes bounce{40%{transform:translateY(-8px) scale(1.2)}}
+@keyframes fall{to{transform:translateY(105vh) rotate(360deg)}}
 .sub{color:var(--sub);font-size:13px}
-.big{text-align:center;padding:26px 16px}
-.big b{display:block;font-size:64px;font-weight:700;color:var(--pk);line-height:1}
-.row{display:flex;gap:12px}.row>*{flex:1}
-.av{text-align:center;position:relative;padding-top:54px}
-.av img,.av .ph{width:78px;height:78px;border-radius:50%;object-fit:cover;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 6px}
-.bub{position:absolute;top:0;left:50%;transform:translateX(-50%);background:var(--soft);border-radius:16px;padding:6px 10px;font-size:12px;max-width:100%;min-width:40px}
+.big{text-align:center;padding:26px 12px;background:linear-gradient(135deg,#ffd1e0aa,#e4d4ffaa)}
+.big .heart{font-size:34px;display:inline-block;animation:beat 1.6s infinite}
+.big b{display:block;font-size:76px;font-weight:800;color:var(--pk);line-height:1.05}
+.row{display:flex;gap:12px}.row>*{flex:1;min-width:0}
+.av{text-align:center;position:relative;padding-top:56px}
+.av .pic{width:84px;height:84px;border-radius:50%;object-fit:cover;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:38px;margin:0 auto 8px;border:4px solid transparent;background-clip:padding-box;box-shadow:0 0 0 3px var(--pk)}
+.bub{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:var(--soft);border-radius:18px;padding:6px 12px;font-size:12px;width:max-content;max-width:100%;animation:bob 3s ease-in-out infinite}
 .bub:after{content:"";position:absolute;bottom:-6px;left:50%;margin-left:-6px;border:6px solid transparent;border-top-color:var(--soft);border-bottom:0}
-.bar{height:10px;border-radius:5px;background:var(--ln);overflow:hidden;margin-top:8px}
-.bar i{display:block;height:100%;background:var(--pk);border-radius:5px;transition:width .4s}
-input,textarea,select{width:100%;font:inherit;font-size:16px;color:var(--tx);background:var(--bg);border:0;border-radius:12px;padding:11px 12px;margin:4px 0 10px;outline:none}
-textarea{min-height:84px;resize:vertical}
-label{font-size:13px;color:var(--sub)}
-button{font:inherit;font-weight:600;border:0;border-radius:14px;padding:12px 16px;background:var(--pk);color:#fff;width:100%;cursor:pointer}
-button.g{background:var(--bg);color:var(--pk)}
-button.s{width:auto;padding:8px 14px;font-size:14px}
-input[type=range]{padding:0;accent-color:var(--pk);background:none}
-.pill{background:var(--soft);color:var(--pk);border-radius:14px;padding:10px 12px;margin-bottom:8px;font-size:14px}
-.ans{background:var(--bg);border-radius:12px;padding:10px 12px;margin:4px 0 10px;white-space:pre-wrap;font-size:15px}
-.jp{width:100%;border-radius:14px;margin-top:6px}
-nav{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(20px);border-top:.5px solid var(--ln);padding:8px 0 calc(8px + env(safe-area-inset-bottom,0px))}
-nav a{flex:1;text-align:center;font-size:11px;color:var(--sub);cursor:pointer}
-nav a span{display:block;font-size:22px}
-nav a.on{color:var(--pk)}
-#login{max-width:360px;margin:18vh auto 0;padding:20px;text-align:center}
-#login h1{font-size:34px}
-#toast{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);left:50%;transform:translateX(-50%);background:#000c;color:#fff;border-radius:20px;padding:8px 16px;font-size:14px}
-.q{font-size:20px;line-height:1.4;text-align:center;padding:18px 6px}
+.bar{height:14px;border-radius:7px;background:var(--soft);overflow:hidden;margin-top:10px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#ffa4c0,var(--pk));border-radius:7px;transition:width .6s cubic-bezier(.2,1.4,.4,1)}
+input,textarea,select{width:100%;font:inherit;font-size:16px;color:var(--tx);background:var(--soft);border:2px solid transparent;border-radius:16px;padding:12px 14px;margin:4px 0 12px;outline:none;transition:border .2s,box-shadow .2s}
+input:focus,textarea:focus,select:focus{border-color:var(--pk);box-shadow:0 0 0 4px #ff6b9822}
+textarea{min-height:92px;resize:vertical}
+label{font-size:13px;color:var(--sub);font-weight:800}
+button{font:inherit;font-weight:800;border:0;border-radius:20px;padding:13px 18px;background:linear-gradient(135deg,#ff8fb1,var(--pk));color:#fff;width:100%;cursor:pointer;box-shadow:0 6px 16px #ff6b9855;transition:transform .15s}
+button:active{transform:scale(.94)}
+button.g{background:var(--soft);color:var(--pk);box-shadow:none}
+button.s{width:auto;padding:9px 16px;font-size:14px}
+.seg{display:flex;gap:6px}.seg button{padding:10px 4px;font-size:14px}
+.pill{background:linear-gradient(135deg,#ffd1e0,#e4d4ff);color:#6b3a55;border-radius:20px;padding:12px 16px;margin-bottom:12px;font-size:14px;font-weight:800;animation:pop .5s both;cursor:pointer}
+.ans{background:var(--soft);border-radius:16px;padding:12px 14px;margin:4px 0 12px;white-space:pre-wrap;font-size:15px}
+.jp{width:100%;border-radius:20px;margin:4px 0 8px}
+.qh{font-size:20px;font-weight:800;margin-bottom:6px}
+.strip{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:none}.strip::-webkit-scrollbar{display:none}
+.dy{flex:0 0 50px;text-align:center;padding:8px 0;border-radius:18px;background:var(--soft);cursor:pointer;position:relative;transition:transform .2s}
+.dy small{display:block;font-size:11px;color:var(--sub)}.dy b{font-size:17px}
+.dy.on{background:linear-gradient(135deg,#ff8fb1,var(--pk));color:#fff;transform:scale(1.1)}.dy.on small{color:#fff}
+.dy.has:after{content:"💗";position:absolute;right:-2px;top:-6px;font-size:12px}
+.nav2{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.nav2 button{width:42px;height:42px;padding:0;border-radius:50%;font-size:18px}
+.rate{text-align:center;background:var(--soft);border-radius:24px;padding:16px 16px 20px;margin:6px 0 14px}
+.face{font-size:64px;line-height:1.1}.pp{animation:bounce .45s}
+.pct{font-size:28px;color:var(--pk);margin-bottom:8px}.pct b{font-weight:800;font-size:38px}
+.rg{-webkit-appearance:none;appearance:none;height:16px;border-radius:8px;padding:0;margin:6px 0 0;border:0;background:linear-gradient(90deg,#ffa4c0,var(--pk)) 0/var(--v) 100% no-repeat,#fff9;box-shadow:inset 0 1px 3px #0002}
+.rg:focus{box-shadow:inset 0 1px 3px #0002}
+.rg::-webkit-slider-thumb{-webkit-appearance:none;width:38px;height:38px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff4f86' d='M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.7A4.5 4.5 0 0 1 20 10c0 5.800-8 11-8 11z'/%3E%3C/svg%3E") center/contain no-repeat;filter:drop-shadow(0 3px 4px #ff4f8666)}
+.rg::-moz-range-thumb{width:38px;height:38px;border:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ff4f86' d='M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.7A4.5 4.5 0 0 1 20 10c0 5.800-8 11-8 11z'/%3E%3C/svg%3E") center/contain no-repeat}
+.qc{text-align:center;background:linear-gradient(135deg,#ffb8d0,#c9b6ff);color:#fff;position:relative;overflow:hidden}
+.qc:before{content:"“";position:absolute;top:-20px;left:12px;font-size:120px;opacity:.3}
+.qc .q{font-size:22px;line-height:1.45;font-weight:800;padding:22px 6px 16px;position:relative}
+.qc button{background:#fff3;box-shadow:none}
+.qm{display:flex;gap:8px}
+.fv{background:var(--soft);border-radius:20px;padding:14px;margin-bottom:10px;font-size:15px;animation:pop .4s both}
+nav{position:fixed;left:14px;right:14px;bottom:calc(12px + env(safe-area-inset-bottom,0px));max-width:492px;margin:auto;background:var(--card);backdrop-filter:blur(18px);border-radius:32px;box-shadow:var(--sh);display:flex;padding:8px;z-index:5}
+nav a{flex:1;text-align:center;font-size:11px;font-weight:800;color:var(--sub);padding:6px 0;border-radius:24px;cursor:pointer}
+nav a span{display:block;font-size:22px}nav a.on{background:var(--soft);color:var(--pk)}nav a.on span{animation:bounce .5s}
+#login{position:relative;max-width:360px;margin:16vh auto 0;padding:20px;text-align:center}
+#login h1{font-size:36px}#login .heart{font-size:64px;animation:beat 1.4s infinite}
+#toast{position:fixed;top:calc(env(safe-area-inset-top,0px) + 14px);left:50%;transform:translateX(-50%);background:var(--pk);color:#fff;border-radius:22px;padding:10px 18px;font-size:14px;font-weight:800;z-index:9;box-shadow:var(--sh)}
+.cf{position:fixed;top:-30px;font-size:24px;animation:fall 1.8s ease-in forwards;z-index:9;pointer-events:none}
 </style></head>
 <body>
+<div id="fl"></div>
 <div id="login" hidden>
-  <div style="font-size:54px">💗</div><h1>Our Journal</h1>
-  <p class="sub" style="margin-bottom:18px">Just the two of us</p>
+  <div class="heart">💗</div><h1>Our Little World</h1>
+  <p class="sub" style="margin-bottom:20px">Just the two of us 🌸</p>
   <input id="em" type="email" placeholder="Email" autocomplete="username">
   <input id="pw" type="password" placeholder="Password" autocomplete="current-password">
-  <button onclick="A.login()">Sign in</button>
+  <button onclick="A.login()">Come in 💕</button>
   <p id="err" class="sub" style="color:#ff3b30;margin-top:10px"></p>
 </div>
 <div id="app" hidden><div id="view"></div>
-<nav>
-  <a data-t="home"><span>🏠</span>Home</a><a data-t="journal"><span>📖</span>Journal</a>
-  <a data-t="quotes"><span>💌</span>Quotes</a><a data-t="settings"><span>⚙️</span>Settings</a>
-</nav></div>
+<nav><a data-t="home"><span>🏡</span>Home</a><a data-t="journal"><span>📖</span>Journal</a><a data-t="quotes"><span>💌</span>Love</a><a data-t="settings"><span>🎀</span>Settings</a></nav></div>
 <div id="toast" hidden></div>
 
 <script type="module">
 import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut,updatePassword,reauthenticateWithCredential,EmailAuthProvider} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import {getFirestore,doc,setDoc,onSnapshot,collection} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-/* ====== 1) PASTE YOUR FIREBASE CONFIG HERE ====== */
+/* ====== PASTE YOUR FIREBASE CONFIG HERE ====== */
 const firebaseConfig = {
   apiKey: "AIzaSyCPLODnYR3I_Si49s1BOQn5-nmD_u7DfH8",
   authDomain: "peterandgrace.firebaseapp.com",
@@ -73,132 +104,181 @@ const firebaseConfig = {
   messagingSenderId: "340697208916",
   appId: "1:340697208916:web:9f9725822d2347229ef5c1"
 };
-/* ================================================ */
+/* ============================================= */
 
 const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const ymd=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
-const QUOTES=["Love is not found, it is built, one small kindness at a time.","The best conversations are the ones that never feel like they need to end.","Home is wherever you are.","Choose each other, again and again, every single day.","Small moments together become the biggest memories.","A good relationship is two people growing in the same direction.","Listening is one of the quietest ways to say I love you.","Be the reason they smile today.","Love grows where gratitude lives.","You don't have to be perfect, just be present.","Holding hands is a promise without words.","The little things are the big things."];
-const SIGNS=["♈ Aries","♉ Taurus","♊ Gemini","♋ Cancer","♌ Leo","♍ Virgo","♎ Libra","♏ Scorpio","♐ Sagittarius","♑ Capricorn","♒ Aquarius","♓ Pisces"];
-let U={},C={},J={},me,tab="home",photo=null,avatar=null;
-const pid=()=>Object.keys(U).find(k=>k!==me);
 const today=()=>ymd(new Date());
-const toast=t=>{const e=$("#toast");e.textContent=t;e.hidden=false;setTimeout(()=>e.hidden=true,1800)};
+const addD=(s,n)=>{const d=new Date(s+"T00:00:00");d.setDate(d.getDate()+n);return ymd(d)};
+const lab=s=>new Date(s+"T00:00:00").toLocaleDateString(undefined,{weekday:"long",month:"short",day:"numeric"});
+const QUOTES=["Love is built one small kindness at a time.","Home is wherever you are.","Choose each other, again and again, every day.","Small moments together become the biggest memories.","Two people growing in the same direction: that's love.","Listening is a quiet way of saying I love you.","Be the reason they smile today.","Love grows where gratitude lives.","You don't have to be perfect, just be present.","Holding hands is a promise without words.","The little things are the big things.","With you, ordinary days feel like magic.","Every day with you is my favourite day.","Love is a team sport.","The best part of my day is when I get to tell you about it.","Together is my favourite place to be.","Kind words are love in its simplest form.","You make my heart feel at home.","Laugh together, grow together, stay together.","Love is paying attention to each other's tiny joys."];
+const ASK=["What's a tiny thing I do that you secretly love?","What's your happiest memory of us so far?","Where would you take me for a surprise trip?","What song reminds you of us?","What's one dream you want us to chase together?","What made you smile today?","What's your favourite way to spend a lazy day with me?","What's something new you'd like us to try?","When did you first know you liked me?","What's one thing I can do to make your week better?"];
+const DATES=["🍜 Cook a new recipe together","🌅 Watch the sunset somewhere new","🎬 Movie night with homemade popcorn","📸 Photo walk, take 10 pics of each other","🧋 Café-hopping day","🎲 Board-game night","🧺 Picnic in the park","💌 Write each other a letter and swap","🛍️ Visit a market and buy a surprise for each other","🌙 Stargazing with blankets"];
+const SIGNS=["♈ Aries","♉ Taurus","♊ Gemini","♋ Cancer","♌ Leo","♍ Virgo","♎ Libra","♏ Scorpio","♐ Sagittarius","♑ Capricorn","♒ Aquarius","♓ Pisces"];
+const FACES=["😿","😢","🥺","🙂","😊","🥰","😍"];
+const face=v=>FACES[Math.min(6,Math.floor(v/14.3))];
+const rnd=n=>Math.floor(Math.random()*n);
+let U={},C={},J={},me,tab="home",photo=null,jd=today(),qi=null,ai=rnd(ASK.length),di=rnd(DATES.length),counted=false;
+const pid=()=>Object.keys(U).find(k=>k!==me);
+const toast=t=>{const e=$("#toast");e.textContent=t;e.hidden=false;setTimeout(()=>e.hidden=true,2000)};
+const confetti=()=>{for(let i=0;i<26;i++){const s=document.createElement("span");s.className="cf";s.textContent=["💗","✨","🌸","💕","🎀"][rnd(5)];s.style.left=rnd(100)+"vw";s.style.animationDelay=Math.random()*.6+"s";document.body.append(s);setTimeout(()=>s.remove(),2600)}};
+const comp=(f,max,q)=>new Promise(r=>{const i=new Image();i.onload=()=>{const s=Math.min(1,max/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=i.width*s;c.height=i.height*s;c.getContext("2d").drawImage(i,0,0,c.width,c.height);r(c.toDataURL("image/jpeg",q))};i.src=URL.createObjectURL(f)});
 
-function comp(f,max,q){return new Promise(r=>{const i=new Image();i.onload=()=>{const s=Math.min(1,max/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=i.width*s;c.height=i.height*s;c.getContext("2d").drawImage(i,0,0,c.width,c.height);r(c.toDataURL("image/jpeg",q))};i.src=URL.createObjectURL(f)})}
+/* theme */
+const mq=matchMedia("(prefers-color-scheme: dark)");
+const theme=()=>localStorage.getItem("th")||"auto";
+const applyTheme=()=>{const m=theme();document.documentElement.dataset.theme=m==="auto"?(mq.matches?"dark":"light"):m};
+mq.onchange=applyTheme;applyTheme();
+for(let i=0;i<12;i++){const s=document.createElement("span");s.textContent=["💗","✨","🌸","💕","🫧"][i%5];s.style.cssText=`left:${rnd(95)}%;font-size:${14+rnd(18)}px;animation-duration:${14+rnd(16)}s;animation-delay:-${rnd(20)}s`;$("#fl").append(s)}
 
-const streak=()=>{let n=0,d=new Date();if(!J[ymd(d)+"_"+me]?.saved)d.setDate(d.getDate()-1);while(J[ymd(d)+"_"+me]?.saved){n++;d.setDate(d.getDate()-1)}return n};
-
+const streak=()=>{let n=0,d=today();if(!J[d+"_"+me]?.saved)d=addD(d,-1);while(J[d+"_"+me]?.saved){n++;d=addD(d,-1)}return n};
 function events(){
-  const out=[],now=new Date();
+  const out=[];
   for(const off of [0,1]){
-    const d=new Date(now.getFullYear(),now.getMonth(),now.getDate()+off),when=off?"Tomorrow":"Today";
+    const d=addD(today(),off),dd=new Date(d+"T00:00:00"),when=off?"Tomorrow":"Today";
     if(C.start){const s=new Date(C.start+"T00:00:00");
-      if(d>s&&d.getDate()===s.getDate()){const m=(d.getFullYear()-s.getFullYear())*12+d.getMonth()-s.getMonth();
-        out.push(when+": "+(m%12===0?"🎉 "+m/12+"-year anniversary":"💞 "+m+"-month anniversary"))}}
-    for(const k in U){const b=U[k].birthday;if(b&&b.slice(5)===ymd(d).slice(5))out.push(when+": 🎂 "+esc(U[k].name||"Birthday")+"'s birthday")}
+      if(dd>s&&dd.getDate()===s.getDate()){const m=(dd.getFullYear()-s.getFullYear())*12+dd.getMonth()-s.getMonth();
+        out.push(`${when}: ${m%12===0?"🎉 "+m/12+"-year anniversary":"💞 "+m+"-month anniversary"}`)}}
+    for(const k in U){const b=U[k].birthday;if(b&&b.slice(5)===d.slice(5))out.push(`${when}: 🎂 ${esc(U[k].name||"Birthday")}'s birthday`)}
   }
   return out;
 }
-
 const avCard=(u={},mine)=>{
   const live=u.note&&Date.now()-u.note.ts<864e5;
-  return `<div class="card av">${live?`<div class="bub">${esc(u.note.text)}</div>`:`<div class="bub" style="opacity:.5">…</div>`}
-  ${u.avatar?`<img src="${u.avatar}">`:`<div class="ph">${mine?"🙂":"🥰"}</div>`}
+  return `<div class="card av">${live?`<div class="bub">${esc(u.note.text)}</div>`:""}
+  ${u.avatar?`<img class="pic" src="${u.avatar}">`:`<div class="pic">${mine?"🐰":"🐻"}</div>`}
   <b>${esc(u.name||(mine?"You":"Partner"))}</b><div class="sub">${esc(u.zodiac||"")}</div></div>`};
 
 function home(){
   const t=today(),m=U[me]||{},p=U[pid()]||{};
   const d=C.start?Math.floor((new Date(t)-new Date(C.start))/864e5)+1:null;
   const n=[me,pid()].filter(k=>k&&J[t+"_"+k]?.saved).length;
-  return `<h1>Together</h1>
-  <div class="card big">${d?`<b>${d}</b><div class="sub">days together 💗</div>`:`<div class="sub">Set your anniversary date in Settings</div>`}</div>
+  const next=d?(Math.floor(d/100)+1)*100:0;
+  const ap=Object.entries(J).find(([k,v])=>v.uid===me&&v.appeal?.status==="pending");
+  return `<h1>Hello, love 💕</h1>
+  <div class="card big">${d?`<span class="heart">💗</span><b id="dn" data-n="${d}">${d}</b><div class="sub">days together</div>
+    <div class="sub" style="margin-top:8px">✨ ${next-d} days until day ${next}</div>`:`<div class="sub">Set your anniversary in Settings 🎀</div>`}</div>
+  ${ap?`<div class="pill" onclick="A.go('${ap[1].date}',1)">💌 Your partner sent you an appeal, tap to read</div>`:""}
   ${events().map(e=>`<div class="pill">${e}</div>`).join("")}
   <div class="row">${avCard(m,1)}${avCard(p,0)}</div>
-  <div class="card"><h3>Leave a note (disappears in 24h)</h3>
-    <input id="nt" maxlength="80" placeholder="Share a thought…"><button class="s" onclick="A.note()">Send 💬</button></div>
-  <div class="card"><h3>Today's journaling</h3><div class="sub">${n}/2 completed · ${J[t+"_"+me]?.saved?"You ✓":"You –"} · ${J[t+"_"+pid()]?.saved?"Partner ✓":"Partner –"}</div>
-    <div class="bar"><i style="width:${n*50}%"></i></div></div>`;
+  <div class="card"><h3>💬 Leave a note (gone in 24h)</h3>
+    <input id="nt" maxlength="60" placeholder="Share a little thought…"><button class="s" onclick="A.note()">Send 🕊️</button></div>
+  <div class="card"><h3>📖 Today's journaling</h3><div class="sub">${n}/2 done · ${J[t+"_"+me]?.saved?"You ✓":"You –"} · ${J[t+"_"+pid()]?.saved?"Partner ✓":"Partner –"}</div>
+    <div class="bar"><i style="width:${n*50}%"></i></div>${n===2?`<div class="sub" style="margin-top:8px">🎉 Both of you wrote today!</div>`:""}</div>`;
 }
 
 function partnerBlock(){
-  const t=today(),P=J[t+"_"+pid()];
-  if(!pid()||!P?.saved)return `<div class="card"><h3>Partner's reflection</h3><div class="sub">Waiting for their entry today…</div></div>`;
+  const P=J[jd+"_"+pid()];
+  if(!pid()||!P?.saved)return `<div class="card"><h3>💭 Partner's reflection</h3><div class="sub">Nothing from them for this day yet…</div></div>`;
   if(P.rating>50||P.appeal?.status==="accepted")
-    return `<div class="card"><h3>Partner's reflection · ${P.rating}% 💗</h3>
-    <label>Actions that made them feel loved</label><div class="ans">${esc(P.a1)}</div>
+    return `<div class="card"><h3>${face(P.rating)} Partner's reflection · ${P.rating}%</h3>
+    <label>What made them feel loved</label><div class="ans">${esc(P.a1)}</div>
     <label>What they did to make you feel loved</label><div class="ans">${esc(P.a2)}</div>
     ${P.photo?`<img class="jp" src="${P.photo}">`:""}${P.comment?`<label>Comment of the day</label><div class="ans">${esc(P.comment)}</div>`:""}</div>`;
   const a=P.appeal;
-  return `<div class="card" style="text-align:center"><div style="font-size:44px">🥺💗</div><h3>Love me more…</h3>
-  ${!a?`<textarea id="ap" placeholder="Make your appeal…"></textarea><button onclick="A.appeal()">Send appeal</button>`
-  :a.status==="pending"?`<div class="sub">Appeal sent, waiting for their answer 💌</div>`:`<div class="sub">Appeal declined 💔 Today's answers stay hidden.</div>`}</div>`;
+  return `<div class="card" style="text-align:center"><div style="font-size:56px;animation:beat 1.4s infinite">🥺💗</div><h3>Love me more…</h3>
+  ${!a?`<textarea id="ap" placeholder="Make your sweetest appeal…"></textarea><button onclick="A.appeal()">Send appeal 💌</button>`
+  :a.status==="pending"?`<div class="sub">Appeal sent, waiting for their answer 💌</div>`:`<div class="sub">Appeal declined 💔 This day stays hidden.</div>`}</div>`;
 }
 
 function journal(){
-  const t=today(),M=J[t+"_"+me]||{},a=M.appeal;
+  const t=today(),M=J[jd+"_"+me]||{},a=M.appeal,r=M.rating??80;
+  const strip=Array.from({length:14},(_,i)=>addD(t,i-13)).map(s=>`<a class="dy ${s===jd?"on":""} ${J[s+"_"+me]?.saved?"has":""}" onclick="A.go('${s}')"><small>${new Date(s+"T00:00:00").toLocaleDateString(undefined,{weekday:"short"})}</small><b>${+s.slice(8)}</b></a>`).join("");
   return `<h1>Journal</h1>
-  <div class="card" style="text-align:center"><b style="font-size:34px;color:var(--pk)">🔥 ${streak()}</b><div class="sub">day streak</div></div>
+  <div class="card"><div class="nav2"><button class="g" onclick="A.go(addD(jd,-1))">‹</button>
+    <div style="text-align:center"><b>${jd===t?"Today":lab(jd)}</b><div class="sub">🔥 ${streak()} day streak</div></div>
+    <button class="g" onclick="A.go(addD(jd,1))" ${jd===t?"disabled style='opacity:.3'":""}>›</button></div>
+    <div class="strip">${strip}</div>
+    <label>Jump to any date</label><input type="date" max="${t}" value="${jd}" onchange="A.go(this.value)" style="margin-bottom:0"></div>
   ${a?.status==="pending"?`<div class="card"><h3>💌 Your partner appeals</h3><div class="ans">${esc(a.text)}</div>
-    <div class="row"><button onclick="A.decide(1)">Accept</button><button class="g" onclick="A.decide(0)">Decline</button></div></div>`:""}
+    <div class="row"><button onclick="A.decide(1)">Accept 💖</button><button class="g" onclick="A.decide(0)">Decline</button></div></div>`:""}
   <div class="card">
-    <label>1. Which of my partner's actions make me feel loved and appreciated today?</label><textarea id="a1">${esc(M.a1)}</textarea>
-    <label>2. What kinds of actions did I do to make my partner feel loved and appreciated?</label><textarea id="a2">${esc(M.a2)}</textarea>
-    <label>Today's love rating: <b id="rv">${M.rating??50}</b>%</label>
-    <input id="rt" type="range" min="0" max="100" value="${M.rating??50}" oninput="rv.textContent=this.value">
-    <label>Photo (auto-compressed)</label><input id="ph" type="file" accept="image/*" onchange="A.pick(this)">
-    ${M.photo?`<img class="jp" src="${M.photo}" id="pv">`:`<img class="jp" id="pv" hidden>`}
-    <label style="display:block;margin-top:10px">Comment of the day</label><input id="cm" value="${esc(M.comment)}" placeholder="Anything else?">
-    <button onclick="A.save()">Save today's entry</button></div>
+    <div class="qh">💝 Question 1</div><label>Which of my partner's actions make me feel loved and appreciated today?</label>
+    <textarea id="a1" placeholder="Something sweet they did…">${esc(M.a1)}</textarea>
+    <div class="qh">🌷 Question 2</div><label>What kinds of actions did I do to make my partner feel loved and appreciated?</label>
+    <textarea id="a2" placeholder="How I showed my love…">${esc(M.a2)}</textarea>
+    <div class="qh">💗 Love meter</div>
+    <div class="rate"><div class="face" id="fc">${face(r)}</div><div class="pct"><b id="rv">${r}</b>%</div>
+    <input id="rt" class="rg" type="range" min="0" max="100" value="${r}" style="--v:${r}%" oninput="A.rate(this)"></div>
+    <div class="qh">📸 Photo</div><label>One photo, compressed automatically</label>
+    <input id="ph" type="file" accept="image/*" onchange="A.pick(this)">
+    <img class="jp" id="pv" ${M.photo?`src="${M.photo}"`:"hidden"}>
+    <div class="qh">🗒️ Comment of the day</div><input id="cm" value="${esc(M.comment)}" placeholder="Anything else on your heart?">
+    <button onclick="A.save()">Save this day 💖</button></div>
   ${partnerBlock()}`;
 }
 
 function quotes(){
-  const q=Math.floor(Date.now()/864e5)%QUOTES.length,favs=U[me]?.favs||[];
-  return `<h1>Quotes</h1><div class="card"><div class="sub" style="text-align:center">Quote of the day</div>
-  <div class="q">“${QUOTES[q]}”</div><button onclick="A.fav(${q})">${favs.includes(q)?"♥ Saved":"♡ Save to favourites"}</button></div>
-  <div class="card"><h3>Favourites</h3>${favs.length?favs.map(i=>`<div class="ans">${QUOTES[i]}</div>`).join(""):`<div class="sub">Nothing saved yet</div>`}</div>`;
+  const q=qi??Math.floor(Date.now()/864e5)%QUOTES.length,favs=U[me]?.favs||[];
+  return `<h1>Love corner</h1>
+  <div class="card qc"><div class="sub" style="color:#fffc;position:relative">✨ Quote of the day</div><div class="q">${QUOTES[q]}</div>
+    <div class="qm"><button onclick="A.fav(${q})">${favs.includes(q)?"💖 Saved":"🤍 Save"}</button><button onclick="A.shuf()">🎲 Another</button><button onclick="A.copy(${q})">📋 Copy</button></div></div>
+  <div class="card"><h3>🗣️ Ask each other</h3><div class="ans" style="font-size:17px">${ASK[ai]}</div><button class="g s" onclick="A.ask()">Another question</button></div>
+  <div class="card"><h3>🎈 Date idea</h3><div class="ans" style="font-size:17px">${DATES[di]}</div><button class="g s" onclick="A.dt()">Surprise me</button></div>
+  <div class="card"><h3>💖 Favourite quotes</h3>${favs.length?favs.map(i=>`<div class="fv">“${QUOTES[i]}”</div>`).join(""):`<div class="sub">Tap 🤍 on a quote to keep it here</div>`}</div>`;
 }
 
 function settings(){
-  const m=U[me]||{};
+  const m=U[me]||{},th=theme();
   const f=(id,l,v,t="text")=>`<label>${l}</label><input id="${id}" type="${t}" value="${esc(v)}">`;
   return `<h1>Settings</h1>
-  <div class="card"><h3>Our dates</h3>${f("st","Anniversary (day we got together)",C.start,"date")}<button class="s" onclick="A.start()">Save</button></div>
-  <div class="card"><h3>My profile</h3>
+  <div class="card"><h3>🎨 Theme</h3><div class="seg">${[["light","☀️ Light"],["dark","🌙 Dark"],["auto","✨ Auto"]].map(([k,l])=>`<button class="${th===k?"":"g"}" onclick="A.theme('${k}')">${l}</button>`).join("")}</div></div>
+  <div class="card"><h3>💞 Our dates</h3>${f("st","Anniversary (day we got together)",C.start,"date")}<button class="s" onclick="A.start()">Save</button></div>
+  <div class="card"><h3>🧸 My profile</h3>
     <label>Profile photo</label><input type="file" accept="image/*" onchange="A.av(this)">
     ${f("nm","My name",m.name)}${f("nk","Nickname I call my partner",m.nick)}${f("bd","Birthday",m.birthday,"date")}
     <label>Zodiac sign</label><select id="zd"><option value="">–</option>${SIGNS.map(s=>`<option ${m.zodiac===s?"selected":""}>${s}</option>`).join("")}</select>
     ${f("bl","Blood type",m.blood)}${f("ot","Other info (hobbies, favourite food…)",m.other)}
     <button onclick="A.profile()">Save profile</button></div>
-  <button class="g" onclick="A.out()">Sign out</button>`;
+  <div class="card"><h3>🔐 Change my password</h3>
+    <input id="op" type="password" placeholder="Current password" autocomplete="current-password">
+    <input id="np" type="password" placeholder="New password (6+ characters)" autocomplete="new-password">
+    <button onclick="A.pass()">Update password</button></div>
+  <button class="g" onclick="A.out()">Sign out 👋</button>`;
 }
 
 const views={home,journal,quotes,settings};
-function draw(){
-  if(!me||/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName))return;
+function draw(force){
+  if(!me||(!force&&/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName)))return;
   $("#view").innerHTML=views[tab]();
+  document.querySelectorAll("#view .card").forEach((c,i)=>c.style.animationDelay=i*70+"ms");
   document.querySelectorAll("nav a").forEach(a=>a.classList.toggle("on",a.dataset.t===tab));
+  const s=$(".strip");if(s)s.scrollLeft=1e4;
+  const dn=$("#dn");if(dn&&!counted){counted=true;const n=+dn.dataset.n,t0=performance.now();const st=now=>{const k=Math.min(1,(now-t0)/900);dn.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(st)};requestAnimationFrame(st)}
 }
-document.querySelectorAll("nav a").forEach(a=>a.onclick=()=>{tab=a.dataset.t;document.activeElement.blur?.();draw();scrollTo(0,0)});
+document.querySelectorAll("nav a").forEach(a=>a.onclick=()=>{tab=a.dataset.t;document.activeElement.blur?.();draw(1);scrollTo({top:0,behavior:"smooth"})});
 
+window.addD=addD;
+Object.defineProperty(window,"jd",{get:()=>jd});
 const A=window.A={
-  async login(){try{await signInWithEmailAndPassword(auth,$("#em").value.trim(),$("#pw").value)}catch(e){$("#err").textContent="Wrong email or password"}},
+  async login(){try{await signInWithEmailAndPassword(auth,$("#em").value.trim(),$("#pw").value)}catch(e){$("#err").textContent="Hmm, wrong email or password 🥲"}},
   out:()=>signOut(auth),
-  async note(){const v=$("#nt").value.trim();if(!v)return;await setDoc(doc(db,"users",me),{note:{text:v,ts:Date.now()}},{merge:true});document.activeElement.blur();draw()},
+  go(d,toJ){if(!d||d>today())return;if(toJ)tab="journal";jd=d;photo=null;document.activeElement.blur?.();draw(1)},
+  rate(i){const v=+i.value;i.style.setProperty("--v",v+"%");$("#rv").textContent=v;const f=$("#fc");if(f.textContent!==face(v)){f.textContent=face(v);f.classList.remove("pp");void f.offsetWidth;f.classList.add("pp")}},
+  async note(){const v=$("#nt").value.trim();if(!v)return;await setDoc(doc(db,"users",me),{note:{text:v,ts:Date.now()}},{merge:true});document.activeElement.blur();draw(1)},
   async pick(i){if(!i.files[0])return;photo=await comp(i.files[0],900,.6);$("#pv").src=photo;$("#pv").hidden=false},
   async save(){
-    const t=today(),d={uid:me,date:t,a1:$("#a1").value,a2:$("#a2").value,rating:+$("#rt").value,comment:$("#cm").value,saved:true,ts:Date.now()};
+    const d={uid:me,date:jd,a1:$("#a1").value,a2:$("#a2").value,rating:+$("#rt").value,comment:$("#cm").value,saved:true,ts:Date.now()};
     if(photo)d.photo=photo;
-    try{await setDoc(doc(db,"journals",t+"_"+me),d,{merge:true});photo=null;toast("Saved 💗");document.activeElement.blur();draw()}catch(e){toast("Save failed (photo too big?)")}
+    try{await setDoc(doc(db,"journals",jd+"_"+me),d,{merge:true});photo=null;toast("Saved 💗");confetti();document.activeElement.blur();draw(1)}catch(e){toast("Save failed 😢")}
   },
-  async appeal(){const v=$("#ap").value.trim();if(!v)return;await setDoc(doc(db,"journals",today()+"_"+pid()),{appeal:{text:v,status:"pending"}},{merge:true});document.activeElement.blur();draw()},
-  async decide(ok){await setDoc(doc(db,"journals",today()+"_"+me),{appeal:{status:ok?"accepted":"declined"}},{merge:true})},
+  async appeal(){const v=$("#ap").value.trim();if(!v)return;await setDoc(doc(db,"journals",jd+"_"+pid()),{appeal:{text:v,status:"pending"}},{merge:true});document.activeElement.blur();draw(1)},
+  async decide(ok){await setDoc(doc(db,"journals",jd+"_"+me),{appeal:{status:ok?"accepted":"declined"}},{merge:true});if(ok)confetti()},
   async fav(i){let f=[...(U[me]?.favs||[])];f=f.includes(i)?f.filter(x=>x!==i):[...f,i];await setDoc(doc(db,"users",me),{favs:f},{merge:true})},
-  async start(){await setDoc(doc(db,"couple","main"),{start:$("#st").value},{merge:true});toast("Saved");document.activeElement.blur();draw()},
-  async av(i){if(!i.files[0])return;await setDoc(doc(db,"users",me),{avatar:await comp(i.files[0],256,.7)},{merge:true});toast("Photo updated")},
-  async profile(){await setDoc(doc(db,"users",me),{name:$("#nm").value,nick:$("#nk").value,birthday:$("#bd").value,zodiac:$("#zd").value,blood:$("#bl").value,other:$("#ot").value},{merge:true});toast("Saved");document.activeElement.blur();draw()}
+  shuf(){qi=rnd(QUOTES.length);draw(1)},ask(){ai=rnd(ASK.length);draw(1)},dt(){di=rnd(DATES.length);draw(1)},
+  copy(i){navigator.clipboard?.writeText(QUOTES[i]);toast("Copied 📋")},
+  theme(m){localStorage.setItem("th",m);applyTheme();draw(1)},
+  async start(){await setDoc(doc(db,"couple","main"),{start:$("#st").value},{merge:true});toast("Saved 💞");document.activeElement.blur();draw(1)},
+  async av(i){if(!i.files[0])return;await setDoc(doc(db,"users",me),{avatar:await comp(i.files[0],256,.7)},{merge:true});toast("Photo updated 📸")},
+  async profile(){await setDoc(doc(db,"users",me),{name:$("#nm").value,nick:$("#nk").value,birthday:$("#bd").value,zodiac:$("#zd").value,blood:$("#bl").value,other:$("#ot").value},{merge:true});toast("Saved 🧸");document.activeElement.blur();draw(1)},
+  async pass(){
+    const u=auth.currentUser,np=$("#np").value;
+    if(np.length<6)return toast("New password needs 6+ characters");
+    try{await reauthenticateWithCredential(u,EmailAuthProvider.credential(u.email,$("#op").value));await updatePassword(u,np);$("#op").value=$("#np").value="";toast("Password changed 🔐")}
+    catch(e){toast("Current password is incorrect")}
+  }
 };
 
 onAuthStateChanged(auth,u=>{
