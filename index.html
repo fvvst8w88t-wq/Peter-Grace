@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Us</title>
+<style>
+:root{--bg:#f2f2f7;--card:#fff;--tx:#1c1c1e;--sub:#8e8e93;--pk:#ff5e87;--ln:#e5e5ea;--soft:#fff0f4}
+@media(prefers-color-scheme:dark){:root{--bg:#000;--card:#1c1c1e;--tx:#fff;--sub:#98989f;--ln:#38383a;--soft:#2a1d22}}
+*{box-sizing:border-box;margin:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--tx);padding-top:env(safe-area-inset-top,0px)}
+[hidden]{display:none!important}
+#view{max-width:520px;margin:0 auto;padding:16px 16px 110px}
+h1{font-size:30px;font-weight:700;margin:8px 4px 14px}
+h3{font-size:15px;margin-bottom:8px}
+.card{background:var(--card);border-radius:20px;padding:16px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.sub{color:var(--sub);font-size:13px}
+.big{text-align:center;padding:26px 16px}
+.big b{display:block;font-size:64px;font-weight:700;color:var(--pk);line-height:1}
+.row{display:flex;gap:12px}.row>*{flex:1}
+.av{text-align:center;position:relative;padding-top:54px}
+.av img,.av .ph{width:78px;height:78px;border-radius:50%;object-fit:cover;background:var(--soft);display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 6px}
+.bub{position:absolute;top:0;left:50%;transform:translateX(-50%);background:var(--soft);border-radius:16px;padding:6px 10px;font-size:12px;max-width:100%;min-width:40px}
+.bub:after{content:"";position:absolute;bottom:-6px;left:50%;margin-left:-6px;border:6px solid transparent;border-top-color:var(--soft);border-bottom:0}
+.bar{height:10px;border-radius:5px;background:var(--ln);overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--pk);border-radius:5px;transition:width .4s}
+input,textarea,select{width:100%;font:inherit;font-size:16px;color:var(--tx);background:var(--bg);border:0;border-radius:12px;padding:11px 12px;margin:4px 0 10px;outline:none}
+textarea{min-height:84px;resize:vertical}
+label{font-size:13px;color:var(--sub)}
+button{font:inherit;font-weight:600;border:0;border-radius:14px;padding:12px 16px;background:var(--pk);color:#fff;width:100%;cursor:pointer}
+button.g{background:var(--bg);color:var(--pk)}
+button.s{width:auto;padding:8px 14px;font-size:14px}
+input[type=range]{padding:0;accent-color:var(--pk);background:none}
+.pill{background:var(--soft);color:var(--pk);border-radius:14px;padding:10px 12px;margin-bottom:8px;font-size:14px}
+.ans{background:var(--bg);border-radius:12px;padding:10px 12px;margin:4px 0 10px;white-space:pre-wrap;font-size:15px}
+.jp{width:100%;border-radius:14px;margin-top:6px}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:color-mix(in srgb,var(--card) 88%,transparent);backdrop-filter:blur(20px);border-top:.5px solid var(--ln);padding:8px 0 calc(8px + env(safe-area-inset-bottom,0px))}
+nav a{flex:1;text-align:center;font-size:11px;color:var(--sub);cursor:pointer}
+nav a span{display:block;font-size:22px}
+nav a.on{color:var(--pk)}
+#login{max-width:360px;margin:18vh auto 0;padding:20px;text-align:center}
+#login h1{font-size:34px}
+#toast{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);left:50%;transform:translateX(-50%);background:#000c;color:#fff;border-radius:20px;padding:8px 16px;font-size:14px}
+.q{font-size:20px;line-height:1.4;text-align:center;padding:18px 6px}
+</style></head>
+<body>
+<div id="login" hidden>
+  <div style="font-size:54px">💗</div><h1>Our Journal</h1>
+  <p class="sub" style="margin-bottom:18px">Just the two of us</p>
+  <input id="em" type="email" placeholder="Email" autocomplete="username">
+  <input id="pw" type="password" placeholder="Password" autocomplete="current-password">
+  <button onclick="A.login()">Sign in</button>
+  <p id="err" class="sub" style="color:#ff3b30;margin-top:10px"></p>
+</div>
+<div id="app" hidden><div id="view"></div>
+<nav>
+  <a data-t="home"><span>🏠</span>Home</a><a data-t="journal"><span>📖</span>Journal</a>
+  <a data-t="quotes"><span>💌</span>Quotes</a><a data-t="settings"><span>⚙️</span>Settings</a>
+</nav></div>
+<div id="toast" hidden></div>
+
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import {getFirestore,doc,setDoc,onSnapshot,collection} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+/* ====== 1) PASTE YOUR FIREBASE CONFIG HERE ====== */
+const firebaseConfig = {
+  apiKey: "PASTE_HERE",
+  authDomain: "PASTE_HERE",
+  projectId: "PASTE_HERE",
+  appId: "PASTE_HERE"
+};
+/* ================================================ */
+
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ymd=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const QUOTES=["Love is not found, it is built, one small kindness at a time.","The best conversations are the ones that never feel like they need to end.","Home is wherever you are.","Choose each other, again and again, every single day.","Small moments together become the biggest memories.","A good relationship is two people growing in the same direction.","Listening is one of the quietest ways to say I love you.","Be the reason they smile today.","Love grows where gratitude lives.","You don't have to be perfect, just be present.","Holding hands is a promise without words.","The little things are the big things."];
+const SIGNS=["♈ Aries","♉ Taurus","♊ Gemini","♋ Cancer","♌ Leo","♍ Virgo","♎ Libra","♏ Scorpio","♐ Sagittarius","♑ Capricorn","♒ Aquarius","♓ Pisces"];
+let U={},C={},J={},me,tab="home",photo=null,avatar=null;
+const pid=()=>Object.keys(U).find(k=>k!==me);
+const today=()=>ymd(new Date());
+const toast=t=>{const e=$("#toast");e.textContent=t;e.hidden=false;setTimeout(()=>e.hidden=true,1800)};
+
+function comp(f,max,q){return new Promise(r=>{const i=new Image();i.onload=()=>{const s=Math.min(1,max/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=i.width*s;c.height=i.height*s;c.getContext("2d").drawImage(i,0,0,c.width,c.height);r(c.toDataURL("image/jpeg",q))};i.src=URL.createObjectURL(f)})}
+
+const streak=()=>{let n=0,d=new Date();if(!J[ymd(d)+"_"+me]?.saved)d.setDate(d.getDate()-1);while(J[ymd(d)+"_"+me]?.saved){n++;d.setDate(d.getDate()-1)}return n};
+
+function events(){
+  const out=[],now=new Date();
+  for(const off of [0,1]){
+    const d=new Date(now.getFullYear(),now.getMonth(),now.getDate()+off),when=off?"Tomorrow":"Today";
+    if(C.start){const s=new Date(C.start+"T00:00:00");
+      if(d>s&&d.getDate()===s.getDate()){const m=(d.getFullYear()-s.getFullYear())*12+d.getMonth()-s.getMonth();
+        out.push(when+": "+(m%12===0?"🎉 "+m/12+"-year anniversary":"💞 "+m+"-month anniversary"))}}
+    for(const k in U){const b=U[k].birthday;if(b&&b.slice(5)===ymd(d).slice(5))out.push(when+": 🎂 "+esc(U[k].name||"Birthday")+"'s birthday")}
+  }
+  return out;
+}
+
+const avCard=(u={},mine)=>{
+  const live=u.note&&Date.now()-u.note.ts<864e5;
+  return `<div class="card av">${live?`<div class="bub">${esc(u.note.text)}</div>`:`<div class="bub" style="opacity:.5">…</div>`}
+  ${u.avatar?`<img src="${u.avatar}">`:`<div class="ph">${mine?"🙂":"🥰"}</div>`}
+  <b>${esc(u.name||(mine?"You":"Partner"))}</b><div class="sub">${esc(u.zodiac||"")}</div></div>`};
+
+function home(){
+  const t=today(),m=U[me]||{},p=U[pid()]||{};
+  const d=C.start?Math.floor((new Date(t)-new Date(C.start))/864e5)+1:null;
+  const n=[me,pid()].filter(k=>k&&J[t+"_"+k]?.saved).length;
+  return `<h1>Together</h1>
+  <div class="card big">${d?`<b>${d}</b><div class="sub">days together 💗</div>`:`<div class="sub">Set your anniversary date in Settings</div>`}</div>
+  ${events().map(e=>`<div class="pill">${e}</div>`).join("")}
+  <div class="row">${avCard(m,1)}${avCard(p,0)}</div>
+  <div class="card"><h3>Leave a note (disappears in 24h)</h3>
+    <input id="nt" maxlength="80" placeholder="Share a thought…"><button class="s" onclick="A.note()">Send 💬</button></div>
+  <div class="card"><h3>Today's journaling</h3><div class="sub">${n}/2 completed · ${J[t+"_"+me]?.saved?"You ✓":"You –"} · ${J[t+"_"+pid()]?.saved?"Partner ✓":"Partner –"}</div>
+    <div class="bar"><i style="width:${n*50}%"></i></div></div>`;
+}
+
+function partnerBlock(){
+  const t=today(),P=J[t+"_"+pid()];
+  if(!pid()||!P?.saved)return `<div class="card"><h3>Partner's reflection</h3><div class="sub">Waiting for their entry today…</div></div>`;
+  if(P.rating>50||P.appeal?.status==="accepted")
+    return `<div class="card"><h3>Partner's reflection · ${P.rating}% 💗</h3>
+    <label>Actions that made them feel loved</label><div class="ans">${esc(P.a1)}</div>
+    <label>What they did to make you feel loved</label><div class="ans">${esc(P.a2)}</div>
+    ${P.photo?`<img class="jp" src="${P.photo}">`:""}${P.comment?`<label>Comment of the day</label><div class="ans">${esc(P.comment)}</div>`:""}</div>`;
+  const a=P.appeal;
+  return `<div class="card" style="text-align:center"><div style="font-size:44px">🥺💗</div><h3>Love me more…</h3>
+  ${!a?`<textarea id="ap" placeholder="Make your appeal…"></textarea><button onclick="A.appeal()">Send appeal</button>`
+  :a.status==="pending"?`<div class="sub">Appeal sent, waiting for their answer 💌</div>`:`<div class="sub">Appeal declined 💔 Today's answers stay hidden.</div>`}</div>`;
+}
+
+function journal(){
+  const t=today(),M=J[t+"_"+me]||{},a=M.appeal;
+  return `<h1>Journal</h1>
+  <div class="card" style="text-align:center"><b style="font-size:34px;color:var(--pk)">🔥 ${streak()}</b><div class="sub">day streak</div></div>
+  ${a?.status==="pending"?`<div class="card"><h3>💌 Your partner appeals</h3><div class="ans">${esc(a.text)}</div>
+    <div class="row"><button onclick="A.decide(1)">Accept</button><button class="g" onclick="A.decide(0)">Decline</button></div></div>`:""}
+  <div class="card">
+    <label>1. Which of my partner's actions make me feel loved and appreciated today?</label><textarea id="a1">${esc(M.a1)}</textarea>
+    <label>2. What kinds of actions did I do to make my partner feel loved and appreciated?</label><textarea id="a2">${esc(M.a2)}</textarea>
+    <label>Today's love rating: <b id="rv">${M.rating??50}</b>%</label>
+    <input id="rt" type="range" min="0" max="100" value="${M.rating??50}" oninput="rv.textContent=this.value">
+    <label>Photo (auto-compressed)</label><input id="ph" type="file" accept="image/*" onchange="A.pick(this)">
+    ${M.photo?`<img class="jp" src="${M.photo}" id="pv">`:`<img class="jp" id="pv" hidden>`}
+    <label style="display:block;margin-top:10px">Comment of the day</label><input id="cm" value="${esc(M.comment)}" placeholder="Anything else?">
+    <button onclick="A.save()">Save today's entry</button></div>
+  ${partnerBlock()}`;
+}
+
+function quotes(){
+  const q=Math.floor(Date.now()/864e5)%QUOTES.length,favs=U[me]?.favs||[];
+  return `<h1>Quotes</h1><div class="card"><div class="sub" style="text-align:center">Quote of the day</div>
+  <div class="q">“${QUOTES[q]}”</div><button onclick="A.fav(${q})">${favs.includes(q)?"♥ Saved":"♡ Save to favourites"}</button></div>
+  <div class="card"><h3>Favourites</h3>${favs.length?favs.map(i=>`<div class="ans">${QUOTES[i]}</div>`).join(""):`<div class="sub">Nothing saved yet</div>`}</div>`;
+}
+
+function settings(){
+  const m=U[me]||{};
+  const f=(id,l,v,t="text")=>`<label>${l}</label><input id="${id}" type="${t}" value="${esc(v)}">`;
+  return `<h1>Settings</h1>
+  <div class="card"><h3>Our dates</h3>${f("st","Anniversary (day we got together)",C.start,"date")}<button class="s" onclick="A.start()">Save</button></div>
+  <div class="card"><h3>My profile</h3>
+    <label>Profile photo</label><input type="file" accept="image/*" onchange="A.av(this)">
+    ${f("nm","My name",m.name)}${f("nk","Nickname I call my partner",m.nick)}${f("bd","Birthday",m.birthday,"date")}
+    <label>Zodiac sign</label><select id="zd"><option value="">–</option>${SIGNS.map(s=>`<option ${m.zodiac===s?"selected":""}>${s}</option>`).join("")}</select>
+    ${f("bl","Blood type",m.blood)}${f("ot","Other info (hobbies, favourite food…)",m.other)}
+    <button onclick="A.profile()">Save profile</button></div>
+  <button class="g" onclick="A.out()">Sign out</button>`;
+}
+
+const views={home,journal,quotes,settings};
+function draw(){
+  if(!me||/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName))return;
+  $("#view").innerHTML=views[tab]();
+  document.querySelectorAll("nav a").forEach(a=>a.classList.toggle("on",a.dataset.t===tab));
+}
+document.querySelectorAll("nav a").forEach(a=>a.onclick=()=>{tab=a.dataset.t;document.activeElement.blur?.();draw();scrollTo(0,0)});
+
+const A=window.A={
+  async login(){try{await signInWithEmailAndPassword(auth,$("#em").value.trim(),$("#pw").value)}catch(e){$("#err").textContent="Wrong email or password"}},
+  out:()=>signOut(auth),
+  async note(){const v=$("#nt").value.trim();if(!v)return;await setDoc(doc(db,"users",me),{note:{text:v,ts:Date.now()}},{merge:true});document.activeElement.blur();draw()},
+  async pick(i){if(!i.files[0])return;photo=await comp(i.files[0],900,.6);$("#pv").src=photo;$("#pv").hidden=false},
+  async save(){
+    const t=today(),d={uid:me,date:t,a1:$("#a1").value,a2:$("#a2").value,rating:+$("#rt").value,comment:$("#cm").value,saved:true,ts:Date.now()};
+    if(photo)d.photo=photo;
+    try{await setDoc(doc(db,"journals",t+"_"+me),d,{merge:true});photo=null;toast("Saved 💗");document.activeElement.blur();draw()}catch(e){toast("Save failed (photo too big?)")}
+  },
+  async appeal(){const v=$("#ap").value.trim();if(!v)return;await setDoc(doc(db,"journals",today()+"_"+pid()),{appeal:{text:v,status:"pending"}},{merge:true});document.activeElement.blur();draw()},
+  async decide(ok){await setDoc(doc(db,"journals",today()+"_"+me),{appeal:{status:ok?"accepted":"declined"}},{merge:true})},
+  async fav(i){let f=[...(U[me]?.favs||[])];f=f.includes(i)?f.filter(x=>x!==i):[...f,i];await setDoc(doc(db,"users",me),{favs:f},{merge:true})},
+  async start(){await setDoc(doc(db,"couple","main"),{start:$("#st").value},{merge:true});toast("Saved");document.activeElement.blur();draw()},
+  async av(i){if(!i.files[0])return;await setDoc(doc(db,"users",me),{avatar:await comp(i.files[0],256,.7)},{merge:true});toast("Photo updated")},
+  async profile(){await setDoc(doc(db,"users",me),{name:$("#nm").value,nick:$("#nk").value,birthday:$("#bd").value,zodiac:$("#zd").value,blood:$("#bl").value,other:$("#ot").value},{merge:true});toast("Saved");document.activeElement.blur();draw()}
+};
+
+onAuthStateChanged(auth,u=>{
+  if(!u){me=null;$("#login").hidden=false;$("#app").hidden=true;return}
+  me=u.uid;$("#login").hidden=true;$("#app").hidden=false;
+  setDoc(doc(db,"users",me),{email:u.email},{merge:true});
+  onSnapshot(collection(db,"users"),s=>{U={};s.forEach(d=>U[d.id]=d.data());draw()});
+  onSnapshot(doc(db,"couple","main"),s=>{C=s.data()||{};draw()});
+  onSnapshot(collection(db,"journals"),s=>{J={};s.forEach(d=>J[d.id]=d.data());draw()});
+});
+</script></body></html>
